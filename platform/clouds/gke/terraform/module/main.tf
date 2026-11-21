@@ -1,6 +1,6 @@
 # Phase E (ADR-008): persistent private GKE agent platform. Reusable module; the root in
-# infra/gcp/agent-platform supplies the project, names and exact versions.
-# Derived from the C-proven infra/gcp/google-sdp-evaluation-cluster root (private nodes, private
+# platform/clouds/gke/terraform/root supplies the project, names and exact versions.
+# Derived from the earlier C-proven evaluation cluster root (removed in the 2026-11 cleanup; see git history at 2e2312b) (private nodes, private
 # endpoint + IAM-only DNS endpoint, Dataplane V2 + FQDN policy, Workload Identity, Shielded nodes).
 # Differences: no Cloud NAT (Google APIs through Private Google Access; the two
 # rep.googleapis.com endpoints through Private Service Connect, private_endpoints.tf), persistent-disk CSI on

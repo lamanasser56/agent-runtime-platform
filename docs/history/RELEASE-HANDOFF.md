@@ -115,7 +115,7 @@ Privately set `ASSESSMENT_PROJECT_ID`, `ASSESSMENT_SOURCE_REGISTRY`, `ASSESSMENT
 
 ```bash
 make tools operator-env
-bash scripts/install-assessment-crane.sh "$PWD/.cache/platform-tools"
+# (removed in the 2026-11 cleanup, see 2e2312b) install-assessment-crane "$PWD/.cache/platform-tools"
 bash scripts/install-qualification-tools.sh "$PWD/.cache/platform-tools"
 export PATH="$PWD/.cache/platform-tools:$PATH"
 PYTHONPATH=assessment_overlay:platform/core/src:. .cache/operator-venv/bin/python -B assessment_overlay/live_session.py --images-lock platform/clouds/gke/release-rc1.lock.json --output "$ASSESSMENT_RUN_DIR" --kubectl .cache/platform-tools/kubectl
@@ -153,4 +153,4 @@ Use separate terminals. Click every console screen/tab/button/drawer: Map, Agent
 
 ## Maintenance
 
-After every merged PR update this one `outputs/RESUME.md` with last PR, exact main SHA, current theme/branch, image build state and next step. Repository copy: `docs/operations/RELEASE-HANDOFF.md`. Arabic status after every three merged PRs. Do not stop/delete VMs without owner instruction or recreate worker-access Terraform.
+After every merged PR update this one `outputs/RESUME.md` with last PR, exact main SHA, current theme/branch, image build state and next step. Repository copy: `docs/history/RELEASE-HANDOFF.md`. Arabic status after every three merged PRs. Do not stop/delete VMs without owner instruction or recreate worker-access Terraform.
