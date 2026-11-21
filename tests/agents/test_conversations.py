@@ -1,7 +1,9 @@
 """Real offline orchestration, security budgets and bilingual continuation."""
 
+import copy
 import json
 import unittest
+from dataclasses import replace
 from unittest import mock
 
 from runtime.agents.conversations import (
@@ -11,7 +13,9 @@ from runtime.agents.conversations import (
 )
 from runtime.agents.core import AgentCore, Limits, TurnContext
 from runtime.agents.demo import make_demo
+from runtime.agents.localization import text
 from runtime.agents.questions import select_scope
+from runtime.phase3.trusted_runtime import TenantContext
 from test_core import RecordingGateway, AlterTools
 
 

@@ -1,11 +1,14 @@
 """Offline: redaction fail-closed, provider profiles, manifest invariants (with mutations), secret separation,
 front-door approvals. No cluster, no cloud, no network."""
 import copy
+import hashlib
 import importlib.util
 import io
 import json
+import os
 from pathlib import Path
 import shutil
+import subprocess
 import sys
 import unittest
 import urllib.error

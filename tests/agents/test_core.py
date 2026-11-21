@@ -10,11 +10,14 @@ from unittest import mock
 from runtime.agents.core import Limits, TraceCollector
 from runtime.agents.demo import (
     FakeGateway,
+    SyntheticAnalyzer,
+    SyntheticAnonymizer,
     make_demo,
     prepare_gateway_core,
 )
 from runtime.agents.schemas import ROOT, read_fixed, validate
 from runtime.agents.tools import DemoTools
+from runtime.phase3.adapters import PresidioRedactor
 from runtime.phase3.trusted_runtime import (
     ControlFailure,
     GatewayResult,

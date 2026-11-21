@@ -2,6 +2,7 @@
 import copy
 import unittest
 
+from agent_platform.k8s import KubeError
 from agent_platform.ops import actions, approval, diagnose
 from agent_platform.ops import agent as agent_module
 from agent_platform.ops.agent import Agent
