@@ -12,7 +12,6 @@ import argparse
 import base64
 import datetime
 import json
-import os
 from pathlib import Path
 import secrets
 import shutil

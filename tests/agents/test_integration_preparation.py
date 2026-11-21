@@ -1,6 +1,5 @@
 """Offline response/transaction/audit contracts; no provider or deployed DB."""
 
-from copy import deepcopy
 import json
 import os
 from pathlib import Path

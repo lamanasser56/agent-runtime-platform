@@ -6,7 +6,6 @@ The real handler, the real rendered manifests and the real UI are served; only w
 Scenarios: ok (healthy, redactor events seen), failing (no default-deny in a live list, a pod not ready), down (ops unreachable).
 """
 import argparse
-import copy
 import time
 
 from agent_platform import console
