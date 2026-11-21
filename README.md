@@ -1,41 +1,52 @@
-# Secure AI Agent Platform
+# Secure AI Agent Platform (archived)
 
-A private GKE agent platform with a Console, a Financial Agent UI and a documentation Guide. Untrusted workers use trusted model/data boundaries; a separate executor performs approved, bounded operational changes. The repository includes the current implementation, offline qualification, image/release tooling and historical assessment records. Examples and tests use synthetic data.
+> **Status: archived, November 2026.** The cloud cluster is deleted and nothing here is running. The code, the docs and the recorded evidence stay as a portfolio record.
 
-## Current platform
+A private platform on Google Kubernetes Engine where AI agents run in separate, locked-down spaces. Each agent can reach only what it is allowed to reach: no internet, its own data rows only, personal data masked before it reaches a model, and changes only after the owner approves them.
 
-- **Model gateway:** mandatory request boundary → redactor → private LiteLLM/provider path. Public worker credentials do not bypass mandatory masking. Supported identifier patterns are masked; **person names and passport numbers are not masked**.
-- **Data broker:** the trusted Financial frontdoor owns sign-in and routes each user to a bound worker. Active signed capabilities and forced row-level security bind registered read-only tools to that user. Workers hold no database/session/signing credentials.
-- **Approval executor:** Ops observes and proposes. The trusted app signs owner approval; the independent executor, exact RBAC inventory and admission policy bound the permitted mutation.
-- **Console:** Map, partial agent passports, read-only Onboard review, Ops scan/actions and release-bound Break it results. A worker trace is reported metadata, not an independent complete audit.
-- **Financial and Guide:** separate local screens using one blueprint asset source. Financial's forms, errors and drawers support English/Arabic. Guide knowledge comes from an explicit current documentation corpus bundled into its image.
+![The platform map in the Console: three agents, each in its own space, behind one model gateway and redactor](docs/evidence/console-layout-2026-10-18/after/1-map.png)
 
-[Architecture](docs/architecture.md), [onboarding contract](docs/agent-onboarding-contract.md), [known limitations](docs/security/known-limitations.md) and the [current evidence matrix](docs/agent-platform/claims-matrix.md) define the scope. Current source, the selected deployed release and a historical live pass are different things.
+## What it did
 
-## View and qualify
+| Part | What it did | Where to look |
+| --- | --- | --- |
+| Model gateway | Every model request goes through one gateway, then a redactor, then the private model path. Workers cannot bypass the masking. | [architecture](docs/architecture.md) |
+| Masking | Supported identifiers (emails, phone numbers, card numbers, IBANs, Saudi national IDs) are masked. Person names and passport numbers are **not** masked. | [masking scope](docs/security/masking-scope.md) |
+| Data access | The Financial agent reads only the signed-in user's rows (PostgreSQL row-level security). Workers hold no database or signing credentials. | [claims matrix](docs/agent-platform/claims-matrix.md) |
+| Approvals | The Ops agent only observes and proposes. A separate executor applies a change only after the owner's signed approval, which cannot be replayed. | [claims matrix](docs/agent-platform/claims-matrix.md) |
+| Attack tests | A suite of real attacks against the running platform. The saved record is [attack-suite.json](docs/evidence/attack-suite.json) (19 of 19 stopped, 19 October 2026). | [evidence](docs/evidence/) |
 
-The selected `platform/clouds/gke/release-rc1.lock.json` is the deployment image authority. Source-generator defaults and old image tags are not release evidence. `make up` renders typed selected-release values and applies the reviewed stages. `make demo-check` requires actual ready resources and exact image proofs; a down cluster is not ready.
+What it did not do is listed in [known limitations](docs/security/known-limitations.md).
 
-| Command | Local screen |
+## Why it is archived
+
+Every safeguard was a good idea on its own: a hash for each config file, seven container images bound to one commit, a release lock, signed digests. I approved each one. Together they made the project so rigid that a one-line change meant rebuilding, signing and re-qualifying all seven images. The cost of keeping it running was higher than what it gave back, so I stopped.
+
+What I would do differently:
+
+1. Apply strict locks only to the parts that are finished and stable, not to a project that is still changing.
+2. Before adding any new mechanism, ask what it will cost every time something changes.
+3. Build what I can explain and change myself.
+
+## A note on the numbers
+
+The story video shows a later **Break it** run with 17 attacks and 6 controls. That run was recorded on screen, but its results file was not saved to this repository. The saved suite record is the 19-of-19 run above. Earlier runs, including ones that did not fully pass, are kept in [docs/evidence](docs/evidence/) as they were recorded.
+
+## Repository map
+
+| Folder | Contents |
 | --- | --- |
-| `make port-forward` | Console at `http://127.0.0.1:8080/` |
-| `make agent-forward A=financial` | Trusted Financial UI at `http://127.0.0.1:8081/` |
-| `make agent-forward A=platform-guide` | Guide at `http://127.0.0.1:8082/` |
+| `platform/` | The Console, the Financial agent, the Platform Guide, and the GKE deployment code |
+| `runtime/`, `contracts/`, `policy/`, `providers/` | The agent runtime, its contracts and policies |
+| `tests/`, `evaluation/` | Offline tests and qualification records |
+| `docs/` | Architecture, security, evidence, and [history](docs/history/) of finished operations |
 
-See [how to view](docs/HOW-TO-VIEW.md) and the [recording runbook](docs/operations/demo-runbook.md). Deployment/live commands require approved cloud identity. Offline checks run with `make test` from repository-declared inputs on a fresh GitHub-hosted runner or an engineering VM; release images build on GitHub-hosted runners. Persistent VMs/disks are retained until an explicit owner deletion request.
+More detail is in the [repository map](docs/REPO-MAP.md). Removed tooling (`assessment_overlay/`, `infra/gcp/`, `archive/`) is in git history at commit `2e2312b`.
 
-The final release sequence is source freeze **S** → first-party builds from **S** → cryptographic subject/source verification → lock/evidence-only promotion **R** → deploy the same digests → readiness → the approved exact-image disposable assessment → reset/onboarding/attack checks → full screen walkthrough. Historical evidence cannot replace this sequence for new source.
+## Running the tests
 
-## Engineering checks
+`make test` runs the offline suite (Python 3.12, Go, Node, Docker for Postgres). Deployment commands (`make up` and the rest) need the deleted cloud project and will not work.
 
-Run `make test` for the repository-owned offline suite. It installs hash-locked Python dependencies and pinned Kubernetes/Terraform tools, then checks contracts, current runtime/core behavior, a real local API server and Postgres, Guide, evaluation, Terraform and browser flows. CI runs the same command on a hosted runner. A subset or skipped prerequisite must not be called full readiness.
+## Credits and license
 
-The image workflow scans all severities and applies the unchanged HIGH/CRITICAL-or-any-KEV gate, with only the existing reviewed filelock exception. Before source freeze, refresh pinned bases and remediate every applicable finding with an available fix; record allowed no-fix findings per image. See [release policy](docs/security/container-vulnerability-release-policy.md).
-
-## Repository and history
-
-The [repository map](docs/REPO-MAP.md) identifies component ownership. Runtime/contracts/evaluation code must be judged by its current consumers; a prior phase name or old qualification hash is not a reason to postpone cleanup until teardown. Historical evidence, ADRs and archived inputs are outside the Guide's current corpus. The old loopback demo on port 8765 is a synthetic reference, not the current platform UI.
-
-Do not commit credentials, private operator state, cloud project identities or real user content. The current APIs and recorded outputs have bounded disclosure scopes; keep private cloud command output out of the recording.
-
-The Python runtime, contracts, infrastructure manifests and qualification fixtures were adapted from my MASAR AI Infrastructure contribution. MASAR was a team project; its product frontend and backend remain with their original contributors. Public third-party projects retain their upstream names and licenses. This repository makes no claim of ownership of those upstream projects and is released under the [MIT License](LICENSE).
+The Python runtime, contracts, infrastructure manifests and qualification fixtures were adapted from my contribution to the MASAR AI Infrastructure team project. Its product frontend and backend remain with their original contributors. Third-party projects keep their own names and licenses. Released under the [MIT License](LICENSE). Examples and tests use synthetic data only.
