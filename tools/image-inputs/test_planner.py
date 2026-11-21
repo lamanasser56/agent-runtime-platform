@@ -1,6 +1,7 @@
 """Trusted baseline transport and workflow integration; no GitHub/cloud/network calls."""
 import importlib.util
 import io
+import json
 from pathlib import Path
 import subprocess
 import tempfile

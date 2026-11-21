@@ -1,9 +1,11 @@
 """Offline candidate contracts; SDK messages do not prove Google detection."""
 
+from copy import deepcopy
 import json
 from pathlib import Path
 from types import SimpleNamespace as NS
 import unittest
+from unittest.mock import patch
 
 from runtime.phase3 import google_sdp_adapter as base
 from runtime.phase3.sdp_context_policy import (

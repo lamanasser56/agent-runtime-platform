@@ -1,15 +1,3 @@
 [tool.prisma]
 use_global_node = false
 nodeenv_extra_args = ["--node=22.18.0"]
-
-# A small lint baseline: Pyflakes only. Run with `ruff check .` (not yet wired into CI:
-# that needs ruff added to the hash-locked requirements-dev lock).
-[tool.ruff.lint]
-select = ["F"]
-# Two unused local variables are left for a reviewed change, not a lint pass.
-ignore = ["F841"]
-
-[tool.ruff.lint.per-file-ignores]
-# runtime/ code is copied into the release images; an import-only edit would change image
-# inputs bound to the selected release lock, so its three unused imports are left alone.
-"runtime/**" = ["F401"]

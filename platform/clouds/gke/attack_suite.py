@@ -31,7 +31,7 @@ sys.path.insert(0, str(HERE.parents[1] / 'core/src'))
 from agent_platform import attack_results  # noqa: E402
 from attack_fixtures import FixtureRows
 from attack_runner import Case, run as run_cases, safe_evidence, SECRET_PATTERNS
-from attack_fixture_spec import MONTH, FOREIGN_MARKER, INJECTION_MERCHANT, DIGIT_MERCHANT, ENTRIES
+from attack_fixture_spec import MONTH, OWN_MARKER, FOREIGN_MARKER, INJECTION_MERCHANT, DIGIT_MERCHANT, ENTRIES
 from attack_runtime import NotExercised, RestoreFailed, run_capability_probe, temporary_fault, temporary_annotation  # noqa: E402
 
 CLAIM_WORDS = re.compile(r'invoice|receipt|refund|approv|recorded|registered|processed|paid|فاتور|مسجل|مسجّل|موافق|مدفوع', re.I)

@@ -15,8 +15,8 @@ Current implementation, release metadata and historical evidence have different 
 | `platform/clouds/gke/images.json` | Legacy source-generator defaults; not a second deployment/release qualification authority |
 | `providers` | Declared provider profiles and the approved alias/routing configuration |
 | `runtime`, `contracts` | Shared libraries/contracts and their reference consumers; actual imports and image COPY/ignore inputs determine release use |
-| `evaluation`, `demo` | Reference/evaluation or historical material where applicable; do not infer current product behaviour or live qualification from an old directory/tag |
-| `docs/history` | Finished operational runbooks and bundles, kept as history. The removed assessment tooling, `infra/gcp` and `archive` remain in git history at `2e2312b`; recorded assessment results are in `docs/evidence/live-assessment-2026-10-25` |
+| `evaluation`, `demo`, `infra`, `archive` | Reference/evaluation or historical material where applicable; do not infer current product behaviour or live qualification from an old directory/tag |
+| `assessment_overlay` | Assessment tooling and preserved reports; qualification must target supported current images/configuration, not substituted security code |
 | `scripts` | Validation, lint, dependency locks, source inventory and supply-chain/release tooling |
 | `tests`, `platform/core/tests`, component tests | Current behavioural/contract/HTTP/browser/API-server/Postgres tests, plus explicitly identified reference fixtures |
 | `.github/workflows` | Required CI, supply-chain qualification and first-party image production; tests and image gates are separate checks |

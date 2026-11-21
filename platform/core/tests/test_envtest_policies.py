@@ -5,6 +5,7 @@ ValidatingAdmissionPolicy allow and deny, and that Pod Security "restricted" rej
 Needs ENVTEST_BIN=<dir with kube-apiserver, etcd, kubectl> (`make test-policies` downloads the pinned release).
 NetworkPolicy enforcement needs a CNI and is proven on the live cluster by the attack suite instead.
 """
+import base64
 import json
 import os
 from pathlib import Path
@@ -49,7 +50,7 @@ class LivePolicies(unittest.TestCase):
         cls.procs.append(subprocess.Popen([str(BIN / 'kube-apiserver'), f'--etcd-servers=http://127.0.0.1:{etcd_client}',
             f'--secure-port={api}', '--bind-address=127.0.0.1', f'--cert-dir={cls.tmp / "certs"}', '--authorization-mode=RBAC',
             f'--token-auth-file={cls.tmp / "tokens.csv"}', '--service-cluster-ip-range=10.0.0.0/24', '--allow-privileged=false',
-            '--service-account-issuer=https://kubernetes.default.svc', f'--service-account-key-file={cls.tmp / "sa.key"}',
+            f'--service-account-issuer=https://kubernetes.default.svc', f'--service-account-key-file={cls.tmp / "sa.key"}',
             f'--service-account-signing-key-file={cls.tmp / "sa.key"}'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL))
         cls.kubeconfig = cls.tmp / 'kubeconfig'
         cls.kubeconfig.write_text(yaml.safe_dump({'apiVersion': 'v1', 'kind': 'Config', 'current-context': 'e',
