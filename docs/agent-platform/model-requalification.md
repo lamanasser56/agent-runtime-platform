@@ -70,7 +70,7 @@ requests are used; 21 remain** for attempt 2 (minus any ops explanation requeste
 **Owner decision for attempt 2:** the preferred option was the provider's default thinking (thoughts hidden) with a
 2048-token ceiling. It is not used, because the 1024 ceiling is fixed by the qualified core:
 `runtime/agents/composition.py` sends `max_tokens: 1024` in every request (the request value overrides the gateway's),
-and that file is hash-bound in `evaluation/operations/restoration-qualification.json`. The owner's fallback applies:
+and that file is hash-bound in `evaluation/operations/restoration-qualification.json` (removed in the 2026-11 cleanup; in git history at `2e2312b`). The owner's fallback applies:
 
 - `reasoning_effort: low`. LiteLLM 1.104.0 sends `thinkingLevel: low` with `includeThoughts: true`; it cannot request
   `low` with thoughts hidden.

@@ -172,11 +172,10 @@ class CompositeScoringAmendment(unittest.TestCase):
             self.assertEqual(hashlib.sha256((ROOT / path).read_bytes()).hexdigest(), digest, path)
 
     def test_layer_wired_only_where_amendment_allows(self):
-        # AM-R4: only the admitted live trial composition and the composite campaign tooling use it.
+        # AM-R4: only the composite campaign tooling uses it (the trial composition was removed in the 2026-11 cleanup).
         users = sorted(p.relative_to(ROOT).as_posix() for p in list((ROOT / "runtime").rglob("*.py")) + list((ROOT / "scripts").rglob("*.py"))
                        if "deterministic_email" in p.read_text(errors="ignore") and p.name != "deterministic_email.py")
-        self.assertEqual(users, ["runtime/agents/trial_composition.py", "scripts/evaluate-composite-email-campaign.py",
-                                 "scripts/validate-composite-email-campaign-result.py"])
+        self.assertEqual(users, ["scripts/evaluate-composite-email-campaign.py", "scripts/validate-composite-email-campaign-result.py"])
 
 
 if __name__ == "__main__":
