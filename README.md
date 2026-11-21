@@ -4,9 +4,11 @@
 
 A private platform on Google Kubernetes Engine where AI agents run in separate, locked-down spaces. Each agent can reach only what it is allowed to reach: no internet, its own data rows only, personal data masked before it reaches a model, and changes only after the owner approves them.
 
-![The platform map in the Console: three agents, each in its own space, behind one model gateway and redactor](docs/evidence/console-layout-2026-10-18/after/1-map.png)
+![From the story video: one commit bound to seven container images, every one stamped for a rebuild](docs/images/hook.gif)
 
 ## What it did
+
+![How a request is protected: own space, own rows, signed approval, no internet, then the model gateway, the redactor and the audit record](docs/images/protection-layers.png)
 
 | Part | What it did | Where to look |
 | --- | --- | --- |
@@ -17,6 +19,8 @@ A private platform on Google Kubernetes Engine where AI agents run in separate, 
 | Attack tests | A suite of real attacks against the running platform. The saved record is [attack-suite.json](docs/evidence/attack-suite.json) (19 of 19 stopped, 19 October 2026). | [evidence](docs/evidence/) |
 
 What it did not do is listed in [known limitations](docs/security/known-limitations.md).
+
+![The platform map in the Console while it was running](docs/evidence/console-layout-2026-10-18/after/1-map.png)
 
 ## Why it is archived
 
