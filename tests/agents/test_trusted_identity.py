@@ -15,7 +15,7 @@ from runtime.agents.credentials import (
     application_client_key,
     issuance_request,
 )
-from runtime.agents.demo import make_demo, prepare_gateway_core
+from runtime.agents.demo import make_demo
 from runtime.agents.core import AgentCore
 from runtime.agents.identity import SubjectGrant, TrustedJWTIdentity
 from runtime.phase3.adapters import (

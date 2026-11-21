@@ -14,7 +14,7 @@ ROOT=Path(__file__).resolve().parents[3]
 sys.path.insert(0,str(ROOT/'platform/clouds/gke'))
 import attack_suite
 import attack_network
-from attack_runner import Case, run, safe_evidence
+from attack_runner import Case, run
 from attack_runtime import NotExercised, RestoreFailed, temporary_fault, temporary_annotation
 from test_release_facts import ReleaseFacts
 

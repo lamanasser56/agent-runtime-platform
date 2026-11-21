@@ -14,7 +14,6 @@ owner types "yes":
 
 It never reads, writes or rotates a Secret, never touches the approval passphrase, and prints no secret value or project ID.
 """
-import json
 from pathlib import Path
 import sys
 

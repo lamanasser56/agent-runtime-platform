@@ -21,7 +21,6 @@ import re
 import time
 from urllib.parse import parse_qs, urlsplit
 
-import yaml
 
 from agent_platform import audit, release_facts, masking_scope, ui_assets
 from runtime.agents import web

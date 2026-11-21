@@ -8,7 +8,6 @@ import importlib.util
 import socket
 import threading
 import time
-import types
 import unittest
 from unittest import mock
 
