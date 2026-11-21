@@ -357,9 +357,9 @@ google-api-core==2.40.0 \
     --hash=sha256:4b9e0a80024c269ae173136d5439f4ed284651d6e5e2773ba5c694f481f9c0f4 \
     --hash=sha256:ebee7d1b138b5362beecec260e6e8988ac97346562c7382ccb6f0ad8435c599f
     # via google-cloud-dlp
-google-auth==2.59.1 \
-    --hash=sha256:89c3f931683a482ac97e61df7eb9da5e08a91703f3c752b2377d72cfb7d69e6a \
-    --hash=sha256:ce50fc533ac02f489a2b183a0c156672c376ecb2091b1127bc7efba2975fff27
+google-auth==2.62.2 \
+    --hash=sha256:046c61a72d3a847d6df6417a7f0d5cf054e3b82bbcb54fb1e69d47880964049c \
+    --hash=sha256:e9bcdb0679b6a4369ac327c5c59f06d92f7b4cd2624e7100294c14632f55a36b
     # via
     #   -c requirements-security.in
     #   google-api-core
@@ -458,9 +458,9 @@ jsonschema-specifications==2025.9.1 \
     --hash=sha256:98802fee3a11ee76ecaca44429fda8a41bff98b00a0f2838151b113f210cc6fe \
     --hash=sha256:b540987f239e745613c7a9176f3edb72b832a4ac465cf02712288397832b5e8d
     # via jsonschema
-opentelemetry-api==1.45.1 \
-    --hash=sha256:aa38ed19bcc084ba42782a73255b3582283eced7ad6dddbd6695189e69adfb75 \
-    --hash=sha256:b31553efa588ae44bc306f863c785c5333a9ecc091248c6ee68b4b6c87fdedfb
+opentelemetry-api==1.45.2 \
+    --hash=sha256:2cbd737377e710ee740d261c94e93fa0f08e6d037c18f17513cc0a2d94479a34 \
+    --hash=sha256:d7b0008e21e5fd61cbe7a7f34ca3b6905a78ab677d9bc395e299359c75cda6b4
     # via
     #   -c requirements-security.in
     #   google-api-core
