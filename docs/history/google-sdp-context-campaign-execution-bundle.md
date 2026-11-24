@@ -245,7 +245,7 @@ screenshot verification as a prerequisite. Carry both amendments into this propo
 do not request another screenshot or assume an eligible balance/account status.
 Approval would accept only this campaign's cost regardless of trial-credit coverage.
 **No billing upgrade/change, additional resource/campaign or guaranteed cap is
-included.** Actual charges remain unreconciled. Existing worker/earlier-project and previously
+included.** Actual charges remain unreconciled. Existing worker/earlier-cluster and previously
 retained storage costs are outside the incremental run.
 
 Operator/agent begins cleanup by minute 90 from creation start, immediately on
@@ -255,7 +255,7 @@ delete owned probe/live workloads/namespace/network logging, review saved cleanu
 plan with flag false, remove eight temporary resources/system-role binding and
 disable retained node GSA. Verify actual absence of cluster/pools/VMs/disks/MIGs,
 VPC/subnet/router/NAT/IP/firewalls/routes and any partial creation. Do not delete unrelated
-worker/earlier-project or retained identity resources. Remove private new plans/backend
+worker/earlier-cluster or retained identity resources. Remove private new plans/backend
 caches/credential files after retaining sanitized plan and cleanup summaries.
 
 Retain both current private states/bucket/version/soft-delete/lifecycle, identities/

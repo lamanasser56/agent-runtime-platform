@@ -9,7 +9,7 @@ Use the selected release and current code, not historical PR numbers or a previo
 3. Verify cryptographic signatures, KMS attestations and source provenance for exact image subjects. A tag, receipt or workflow certificate alone is not checkout-source proof.
 4. Promote digests in lock/evidence-only commit **R**. Deploy those same digests with staged `make up`; do not rebuild a different source during promotion.
 5. Run `make demo-check`. Every required resource must actually be ready and match the selected render/digests/evidence. A down cluster or zero workers is not ready.
-6. Run the approved full live assessment on those exact images in its disposable project, under the same 25 October rules and hard ceilings: janitor plus operator, synthetic data and zero external LLM calls. Complete cleanup and billing unlink; keep the original project and persistent VMs outside that cleanup.
+6. Run the approved full live assessment on those exact images in its disposable project, under the same 25 October rules and hard ceilings: janitor plus operator, synthetic data and zero external LLM calls. Complete cleanup and billing unlink; keep the main cloud project and persistent VMs outside that cleanup.
 
 No historical assessment automatically qualifies the new source. Deployment corrections such as node-local DNS egress and staged apply from PR #142 match the older bundle's corrections, but later source/images still need their own qualification.
 
