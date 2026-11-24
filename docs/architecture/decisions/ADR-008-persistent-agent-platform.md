@@ -56,7 +56,7 @@
 - **Negative / accepted:**
   - Some state persists between sessions: the cluster control plane, the PD and its snapshots, the IAM bindings and the Secrets.
     The security posture changes from "nothing remains" to "least privilege while idle".
-  - The free-tier cluster fee covers only one zonal cluster, so masar-gke must be retired or paid for.
+  - The free-tier cluster fee covers only one zonal cluster, so the earlier cluster must be retired or paid for.
 - **Idle-state invariant** (checked by `make test --idle`):
   - 0 nodes
   - no LoadBalancer, Ingress or external IP

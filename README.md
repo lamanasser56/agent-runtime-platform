@@ -51,6 +51,6 @@ More detail is in the [repository map](docs/REPO-MAP.md). Removed tooling (`asse
 
 `make test` runs the offline suite (Python 3.12, Go, Node, Docker for Postgres). Deployment commands (`make up` and the rest) need the deleted cloud project and will not work.
 
-## Credits and license
+## License
 
-The Python runtime, contracts, infrastructure manifests and qualification fixtures were adapted from my contribution to the MASAR AI Infrastructure team project. Its product frontend and backend remain with their original contributors. Third-party projects keep their own names and licenses. Released under the [MIT License](LICENSE). Examples and tests use synthetic data only.
+Released under the [MIT License](LICENSE). Third-party projects keep their own names and licenses. Examples and tests use synthetic data only.
