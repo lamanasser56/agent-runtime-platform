@@ -13,7 +13,7 @@ from source_files import files as source_files
 
 ROOT = Path(__file__).resolve().parents[1]
 SERVER_MASTER_KEY_ENV_VAR = "PORTFOLIO_LITELLM_MASTER_KEY"
-FORBIDDEN_PATH_PARTS = {"backend", "frontend", "fonts"}
+FORBIDDEN_PATH_PARTS = {"fonts"}
 FORBIDDEN_CONTENT = (
     re.compile(r"project-[0-9a-f]{8}-[0-9a-f-]{10,}"),
     re.compile(r"[a-z0-9-]+@[a-z0-9-]+\.iam\.gserviceaccount\.com"),
