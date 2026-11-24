@@ -65,8 +65,8 @@ covers steps 1–9 below. On any deviation, execution stops and reports back to 
      `AGENT_PLATFORM_CI_SERVICE_ACCOUNT`. Or approve `gh variable set`.
 2. **Read-only:**
    - select the exact REGULAR-channel GKE 1.35 version (serverConfig)
-   - check masar-gke's Binary Authorization mode: the new project policy only applies to clusters with
-     `PROJECT_SINGLETON_POLICY_ENFORCE`, and masar-gke is at 0 nodes
+   - check the earlier cluster's Binary Authorization mode: the new project policy only applies to clusters with
+     `PROJECT_SINGLETON_POLICY_ENFORCE`, and the earlier cluster is at 0 nodes
 3. `make plan`, then `make apply`, using the reviewed plan only. The summary JSON is shown before apply.
 4. **you:**
    - `gcloud auth application-default login` (user ADC for Terraform; already used by the token guard)
@@ -84,7 +84,7 @@ covers steps 1–9 below. On any deviation, execution stops and reports back to 
 |---|---|
 | Cluster session, about 4 h | ≈ $0.6 |
 | Requalification + attacks | ≈ $1–3 of model spend (key budgets cap it at $10/month) |
-| Idle after `make down` | ≈ $0.1–0.2/day; +$2.40/day while masar-gke still exists (two clusters exceed the free tier) |
+| Idle after `make down` | ≈ $0.1–0.2/day; +$2.40/day while the earlier cluster still exists (two clusters exceed the free tier) |
 
 ## Risks to watch at the gate
 
@@ -92,7 +92,7 @@ covers steps 1–9 below. On any deviation, execution stops and reports back to 
    policy evaluator with an explicit register (your decision).
 2. Reaching `aiplatform.us.rep.googleapis.com` and `dlp.us-east1.rep.googleapis.com` through Private Google Access with
    no NAT is proven by the attack suite's gateway positive control. If it fails, `make down` and fix offline.
-3. Binary Authorization project policy: confirm at step 2 that masar-gke doesn't evaluate it.
+3. Binary Authorization project policy: confirm at step 2 that the earlier cluster doesn't evaluate it.
 4. The app UI over port-forward depends on loopback/Host behaviour. Proven offline only.
 5. The model was never called through this path before the requalification run.
 

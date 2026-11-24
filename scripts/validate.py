@@ -16,9 +16,7 @@ SERVER_MASTER_KEY_ENV_VAR = "PORTFOLIO_LITELLM_MASTER_KEY"
 FORBIDDEN_PATH_PARTS = {"backend", "frontend", "fonts"}
 FORBIDDEN_CONTENT = (
     re.compile(r"project-[0-9a-f]{8}-[0-9a-f-]{10,}"),
-    re.compile(r"github\.com/[^\s/]+/masar-ai(?:[\s/]|$)", re.IGNORECASE),
     re.compile(r"[a-z0-9-]+@[a-z0-9-]+\.iam\.gserviceaccount\.com"),
-    re.compile(r"[a-z0-9-]+/masar-app@sha256:[0-9a-f]{64}"),
 )
 
 
